@@ -27,7 +27,7 @@ export default function UserRoutes(app) {
   const signup = async (req, res) => {
     const user = await dao.findUserByUsername(req.body.username);
     if (user) {
-      res.status(400).json(
+      return res.status(400).json(
         { message: "Username already taken" });
     }
     const currentUser = await dao.createUser(req.body);
