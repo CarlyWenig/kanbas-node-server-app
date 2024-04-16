@@ -49,7 +49,7 @@ const findAllCourses = async (req, res) => {
 
 const createCourse = async (req, res) => {
     const result = await dao.createCourse(req.body);
-    res.json(result);
+    return res.json(result);
 };
 
   const deleteCourse = async (req, res) => {
