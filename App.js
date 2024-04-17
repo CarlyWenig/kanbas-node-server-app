@@ -29,7 +29,7 @@ const sessionOptions = {
     sessionOptions.cookie = {
       sameSite: "none",
       secure: true,
-      domain: "https://kanbas-node-server-app-1-5sp8.onrender.com",
+      domain: process.env.HTTP_SERVER_DOMAIN,
     };
   }
   app.use(session(sessionOptions));
