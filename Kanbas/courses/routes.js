@@ -64,8 +64,8 @@ const createCourse = async (req, res) => {
 };
 
 const findCourseById = async (req, res) => {
-    const user = await dao.findCourseById(req.params.courseId);
-    res.json(user);
+    const course = await dao.findCourseById(req.params.courseId);
+    res.json(course);
 };
 
 
