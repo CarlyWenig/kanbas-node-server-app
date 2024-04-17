@@ -11,8 +11,9 @@ import "dotenv/config";
 
 // mongoose.connect("mongodb://127.0.0.1:27017/kanbas");
 const CONNECTION_STRING =
-  process.env.DB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas";
-mongoose.connect(CONNECTION_STRING);
+  process.env.DB_CONNECTION_STRING;
+  const DB_NAME = process.env.DB_NAME
+mongoose.connect(CONNECTION_STRING, {dbName: DB_NAME});
 const app = express();
 app.use(
   cors({
@@ -28,7 +29,7 @@ const sessionOptions = {
   cookie: {
     sameSite: "none",
     secure: true,
-    domain: "kanbas-node-server-app-sp24-cs5610-02-l55v.onrender.com",
+    domain: "https://kanbas-node-server-app-sp24-cs5610-02-l55v.onrender.com",
   },
 };
 if (process.env.NODE_ENV !== "development") {
@@ -40,7 +41,6 @@ if (process.env.NODE_ENV !== "development") {
   };
 }
 app.use(session(sessionOptions));
-
 app.use(express.json());
 UserRoutes(app);
 ModuleRoutes(app);
