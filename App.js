@@ -32,7 +32,20 @@ const sessionOptions = {
       domain: process.env.HTTP_SERVER_DOMAIN,
     };
   }
-  app.use(session(sessionOptions));
+//   app.use(session(sessionOptions));
+app.use(
+      session({
+        secret: "supersessionsecret",
+        resave: false,
+        saveUninitialized: false,
+        proxy: true,
+        cookie: {
+          sameSite: "none",
+          secure: true,
+          domain: "/kanbas-node-server-app-1-5sp8.onrender.com",
+        },
+      })
+    );
   
 
 app.use(express.json());
